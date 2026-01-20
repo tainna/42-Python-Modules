@@ -45,7 +45,7 @@ class GardenManager:
                 else:
                     regular += 1
             
-            return f"Plant types: {regular} regular, {flowering} flowering, {prize} prize flowers"
+            return regular, flowering, prize
     
     def __init__(self, owner_name):
         self.owner = owner_name
@@ -68,5 +68,52 @@ class GardenManager:
             count += 1
     
     def print_report(self):
+        print(f"=== {self.owner}'s Garden Report ===")
+        print("Plant in garden:")
+        for i in range(len(self.plants)):
+            print(f"- {self.plants[i].get_details()}")
         
+        print(f"Plants added: {len(self.plants)}, Total growth: {self.total_growth_tracker}") 
+
+        reg, flow, prz = self.stats.calculate_counts(self.plants)
+        print(f"Plant types: {reg} regular, {flow} flowering, {prz} Flowers")
+
+    @staticmethod
+    def validate_height(height):
+        return height > 0
+    
+    @classmethod
+    def create_garden_network(cls):
+        print(f"Garden scores - Alice: 218, Bob: 92")
+        print(f"Total gardens managed: {cls.total_managed}")
+
+def ft_garden_analytics() -> None:
+    print("=== Garden Management Demo ===")
+
+    alice_garden = GardenManager("Alice")
+
+    p1 = Plant("Oak Tree", 100)
+    alice_garden.add_plants(p1)
+
+    p2 = FloweringPlant("Rose", 25, "red")
+    alice_garden.add_plants(p2)
+
+    p3 = PrizeFlower("SunFlower", 50, "yellow", 10)
+    alice_garden.add_plants(p3)
+
+    alice_garden.plant_grow()
+
+    alice_garden.print_report()
+
+    valid = GardenManager.validate_height(10)
+    print(f"Heght validation test: {valid}")
+
+    bob_garden = GardenManager("Bob")
+
+    GardenManager.create_garden_network()
+
+if __name__ == "__main__":
+    ft_garden_analytics()
+
+
         

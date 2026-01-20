@@ -1,9 +1,0 @@
-def ft_plot_area():
-        length = int(input("Enter length: "))
-        width = int(input("Enter width: "))
-        area = length * width
-        print("Plort area:", area)
-
-# # Teste
-# if __name__ == "__main__":
-#     ft_plot_area()
