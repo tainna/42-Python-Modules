@@ -8,5 +8,5 @@ def ft_count_harvest_recursive():
         else:
             print("Day", current_day)
             loop(current_day + 1)
-         
+
     loop(1)

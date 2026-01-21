@@ -1,32 +1,34 @@
 # Create an Garden Manager -- hereditatry
 
 class Plant:
-    def __init__(self, name, height):
+    def __init__(self, name, height) -> None:
         self.name = name
         self.height = height
 
-    def grow(self, cm):
+    def grow(self, cm) -> None:
         self.height += cm
         print(f"{self.name}: grew {cm}cm")
-    
-    def get_details(self):
+
+    def get_details(self) -> None:
         return f"{self.name}: {self.height}cm"
+
 
 class FloweringPlant(Plant):
     def __init__(self, name, height, color):
-        super().__init__(name, height) #Call the mother Plant
+        super().__init__(name, height)
         self.color = color
-    
+
     def get_details(self):
-        return(f"{super().get_details()}, {self.color} flowers (blooming)")
-    
+        return (f"{super().get_details()}, {self.color} flowers (blooming)")
+
 class PrizeFlower(FloweringPlant):
     def __init__(self, name, height, color, prize):
         super().__init__(name, height, color)
         self.prize = prize
     
     def get_details(self):
-        return(f"{super().get_details()}, Prize points: {self.prize}")
+      return(f"{super().get_details()}, Prize points: {self.prize}")
+
 
 class GardenManager:
     total_managed = 0
