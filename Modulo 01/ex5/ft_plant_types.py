@@ -24,7 +24,8 @@ class Flower(Plant):
 
 # There is another baby
 class Tree(Plant):
-    def __init__(self, name, height, age, trunk_diamter):
+    def __init__(self, name: str, height: int,
+                 age: int, trunk_diamter: int) -> None:
         super().__init__(name, height, age)
         self.diamet = trunk_diamter
 
@@ -35,10 +36,11 @@ class Tree(Plant):
 
 
 class Vegetable(Plant):
-    def __init__(self, name, height, age, harvest_season, nutritional_value):
+    def __init__(self, name: str, height: int, age: int,
+                 harvest_season: str, nutritional: str) -> None:
         super().__init__(name, height, age)
         self.hseason = harvest_season
-        self.nutritional_value = nutritional_value
+        self.nutritional_value = nutritional
 
     def show_nutrition(self):
         print(f"{self.n} is rich in {self.nutritional_value}")
