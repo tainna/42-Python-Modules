@@ -26,7 +26,7 @@ class PrizeFlower(FloweringPlant):
     def __init__(self, name, height, color, prize):
         super().__init__(name, height, color)
         self.prize = prize
- 
+
     def get_details(self):
         return (f"{super().get_details()}, Prize points: {self.prize}")
 
@@ -52,13 +52,13 @@ class GardenManager:
     def __init__(self, owner_name):
         self.owner = owner_name
         self.plants = []
-        self.total_growth_tracker = 0
+        self.total = 0
         self.stats = self.GardenStats()
         GardenManager.total_managed += 1
 
     def add_plants(self, plant):
         self.plants.append(plant)
-        print(f"Added {Plant.name} to {self.owner}'s garden")
+        print(f"Added {plant.name} to {self.owner}'s garden")
 
     def plant_grow(self):
         print(f"{self.owner} is helping all plants grow...")
@@ -75,7 +75,7 @@ class GardenManager:
         for i in range(len(self.plants)):
             print(f"- {self.plants[i].get_details()}")
 
-        print(f"Plants added: {len(self.plants)}, Total growth: {self.total}") 
+        print(f"Plants added: {len(self.plants)}, Total growth: {self.total}")
 
         reg, flow, prz = self.stats.calculate_counts(self.plants)
         print(f"Plant types: {reg} regular, {flow} flowering, {prz} Flowers")
@@ -83,7 +83,7 @@ class GardenManager:
     @staticmethod
     def validate_height(height):
         return height > 0
-   
+
     @classmethod
     def create_garden_network(cls):
         print("Garden scores - Alice: 218, Bob: 92")
@@ -112,6 +112,7 @@ def ft_garden_analytics() -> None:
     print(f"Heght validation test: {valid}")
 
     bob_garden = GardenManager("Bob")
+    bob_garden.add_plants(p1)
 
     GardenManager.create_garden_network()
 
