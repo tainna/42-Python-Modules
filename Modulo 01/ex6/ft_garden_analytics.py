@@ -113,7 +113,6 @@ def ft_garden_analytics() -> None:
 
     bob_garden = GardenManager("Bob")
     bob_garden.add_plants(p1)
-
     GardenManager.create_garden_network()
 
 
