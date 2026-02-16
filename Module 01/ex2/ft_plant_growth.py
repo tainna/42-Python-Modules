@@ -13,7 +13,7 @@ class Plant:
         self.age += 1
 
 # To return the string
-    def info(self) -> None:
+    def info(self) -> str:
         return f"{self.name}: {self.height}cm, {self.age} days old"
 
 
