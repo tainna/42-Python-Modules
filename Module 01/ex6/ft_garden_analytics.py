@@ -9,7 +9,7 @@ class Plant:
         self.height += cm
         print(f"{self.name}: grew {cm}cm")
 
-    def get_details(self) -> None:
+    def get_details(self) -> str:
         return f"{self.name}: {self.height}cm"
 
 
@@ -18,7 +18,7 @@ class FloweringPlant(Plant):
         super().__init__(name, height)
         self.color = color
 
-    def get_details(self):
+    def get_details(self) -> str:
         return (f"{super().get_details()}, {self.color} flowers (blooming)")
 
 
@@ -27,7 +27,7 @@ class PrizeFlower(FloweringPlant):
         super().__init__(name, height, color)
         self.prize = prize
 
-    def get_details(self):
+    def get_details(self) -> str:
         return (f"{super().get_details()}, Prize points: {self.prize}")
 
 
@@ -35,7 +35,7 @@ class GardenManager:
     total_managed = 0
 
     class GardenStats:
-        def calculate_counts(self, plants):
+            def calculate_counts(self, plants) -> None:
             regular = 0
             flowering = 0
             prize = 0
@@ -56,11 +56,11 @@ class GardenManager:
         self.stats = self.GardenStats()
         GardenManager.total_managed += 1
 
-    def add_plants(self, plant):
+    def add_plants(self, plant) -> None:
         self.plants.append(plant)
         print(f"Added {plant.name} to {self.owner}'s garden")
 
-    def plant_grow(self):
+    def plant_grow(self) -> None:
         print(f"{self.owner} is helping all plants grow...")
         count = 0
         while count < 3 and count < len(self.plants):
@@ -69,7 +69,7 @@ class GardenManager:
             self.total += 1
             count += 1
 
-    def print_report(self):
+    def print_report(self) -> None:
         print(f"=== {self.owner}'s Garden Report ===")
         print("Plant in garden:")
         for i in range(len(self.plants)):
