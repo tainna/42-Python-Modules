@@ -1,7 +1,7 @@
 # Create an Garden Manager -- hereditatry
 
 class Plant:
-    def __init__(self, name, height) -> None:
+    def __init__(self, name: str, height: int) -> None:
         self.name = name
         self.height = height
 
@@ -14,7 +14,7 @@ class Plant:
 
 
 class FloweringPlant(Plant):
-    def __init__(self, name, height, color) -> None:
+    def __init__(self, name: str, height: int, color: str) -> None:
         super().__init__(name, height)
         self.color = color
 
@@ -23,7 +23,7 @@ class FloweringPlant(Plant):
 
 
 class PrizeFlower(FloweringPlant):
-    def __init__(self, name, height, color, prize) -> None:
+    def __init__(self, name, height, color, prize: int) -> None:
         super().__init__(name, height, color)
         self.prize = prize
 
