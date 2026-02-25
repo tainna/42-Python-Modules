@@ -12,7 +12,7 @@ def ft_command_quest() -> None:
     program_name: str = sys.argv[0]
 
     # Slicing from index 1 givs us just the user-provided arguments
-    user_args: list[str] = sys.arg[1:]
+    user_args: list[str] = sys.argv[1:]
     # "1:" Start at item #1 and take everything until the end.
 
     if not user_args:

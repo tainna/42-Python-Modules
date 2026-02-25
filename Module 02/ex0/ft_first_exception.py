@@ -2,8 +2,8 @@
 def check_temperature(temp_str: str) -> None:
     """
     Introduce the parameter in str bc everything
-    that python recieve is str, the fucntion dont return
-    nothing.
+    that python recieve is str | "None" is bc the
+    fucntion dont return nothing.
     """
     try:
         temp = int(temp_str)

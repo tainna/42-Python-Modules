@@ -14,7 +14,7 @@ class Plant:
 
 
 class FloweringPlant(Plant):
-    def __init__(self, name, height, color):
+    def __init__(self, name, height, color) -> None:
         super().__init__(name, height)
         self.color = color
 
@@ -23,7 +23,7 @@ class FloweringPlant(Plant):
 
 
 class PrizeFlower(FloweringPlant):
-    def __init__(self, name, height, color, prize):
+    def __init__(self, name, height, color, prize) -> None:
         super().__init__(name, height, color)
         self.prize = prize
 
@@ -35,7 +35,7 @@ class GardenManager:
     total_managed = 0
 
     class GardenStats:
-            def calculate_counts(self, plants) -> None:
+        def calculate_counts(self, plants) -> None:
             regular = 0
             flowering = 0
             prize = 0
