@@ -12,7 +12,7 @@ class WaterError(GardenError):
     pass
 
 
-def ft_custom_errors():
+def ft_custom_errors() -> None:
     print("=== Custom Garden Errors Demo ===")
 
     # 1. Testing PlantError specifically
