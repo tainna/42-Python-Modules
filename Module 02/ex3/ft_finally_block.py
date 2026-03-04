@@ -34,7 +34,7 @@ def test_watering_system() -> None:
     # Test 2: List with an invalid item (None) to trigger error
     print("Testing with error...")
     water_plants(["tomato", None, "carrots"])
-    print("Cleanup always happens, even with errors!")
+    print("\nCleanup always happens, even with errors!")
 
 
 if __name__ == "__main__":

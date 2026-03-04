@@ -30,7 +30,7 @@ def test_plant_checks() -> None:
     print("=== Garden Plant Health Checker ===")
 
     # Test 1: Good values
-    print("Testing good values...")
+    print("\nTesting good values...")
     try:
         # We capture the success message in a variable and print it
         result = check_plant_health("tomato", 5, 6)
@@ -39,27 +39,27 @@ def test_plant_checks() -> None:
         print(f"Error: {e}")
 
     # Test 2: Empty plant name
-    print("Testing empty plant name...")
+    print("\nTesting empty plant name...")
     try:
         check_plant_health("", 5, 6)
     except ValueError as e:
         print(f"Error: {e}")
 
     # Test 3: Bad water level
-    print("Testing bad water level...")
+    print("\nTesting bad water level...")
     try:
         check_plant_health("tomato", 15, 6)
     except ValueError as e:
         print(f"Error: {e}")
 
     # Test 4: Bad sunlight hours
-    print("Testing bad sunlight hours...")
+    print("\nTesting bad sunlight hours...")
     try:
         check_plant_health("tomato", 5, 0)
     except ValueError as e:
         print(f"Error: {e}")
 
-    print("All error raising tests completed!")
+    print("\nAll error raising tests completed!")
 
 
 if __name__ == "__main__":
