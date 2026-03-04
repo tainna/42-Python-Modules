@@ -1,13 +1,14 @@
 
 
 def ft_achievement_tracker() -> None:
-    print("=== Achievement Tracker System ===")
+    print("=== Achievement Tracker System ===\n")
 
     alice = {'first_kill', 'level_10', 'treasure_hunter', 'speed_demon'}
     bob = {'first_kill', 'level_10', 'boss_slayer', 'collector'}
     charlie = {'level_10', 'treasure_hunter', 'boss_slayer', 'speed_demon',
                'perfectionist'}
     """
+    mudar para:
     alice = set(['first_kill', 'level_10', 'treasure_hunter', 'speed_demon'])
     bob = set(['first_kill', 'level_10', 'boss_slayer', 'collector'])
     """
@@ -35,9 +36,9 @@ def ft_achievement_tracker() -> None:
     all_shared = alice_bob.union(bob_charlie, charlie_alice)
 
     rare = all_total.difference(all_shared)
-    print(f"Rare achievemen (1 player) : {rare}")
+    print(f"Rare achievemen (1 player): {rare}")
 
-    print(f"Alice vs Bob common: {alice_bob}")
+    print(f"\nAlice vs Bob common: {alice_bob}")
     print(f"Alice unique: {alice_unique}")
     print(f"Bob unique: {bob_unique}")
 
