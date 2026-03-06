@@ -1,5 +1,7 @@
 import sys
-
+"""
+nao pode usar split
+"""
 
 def ft_inventory_system() -> None:
     # Check if have arguments
@@ -54,7 +56,7 @@ def ft_inventory_system() -> None:
         unit_str = "unit" if v == 1 else "units"
         print(f"{k}: {v} {unit_str} ({pct:.1f}%)")
 
-# 4. Estatísticas
+    # 4. Statistcs
     most_k = sorted_keys[0]
     least_k = sorted_keys[-1]
 
@@ -64,7 +66,7 @@ def ft_inventory_system() -> None:
     print("\n=== Inventory Statistics ===")
     print(f"Most abundant: {most_k} ({inventory.get(most_k)} {unit_most})")
     print(f"Least abundant: {least_k} ({inventory.get(least_k)} {unit_least})")
-    # 5. Categorias e Sugestões
+    # Categories and suggestions
     moderate = dict()
     scarce = dict()
     restock = []
@@ -90,10 +92,10 @@ def ft_inventory_system() -> None:
             restock_str += ", "
     print(f"Restock needed: {restock_str}")
 
-    # 6. Demonstração de Propriedades do Dicionário
+    # Demonstração de Propriedades do Dicionário
     print("\n=== Dictionary Properties Demo ===")
 
-    # Formatando chaves
+    # Formating keys
     keys_list = list(inventory.keys())
     keys_str = ""
     for i in range(len(keys_list)):
@@ -101,7 +103,7 @@ def ft_inventory_system() -> None:
         if i < len(keys_list) - 1:
             keys_str += ", "
 
-    # Formatando valores
+    # Formating values
     vals_list = list(inventory.values())
     vals_str = ""
     for i in range(len(vals_list)):
