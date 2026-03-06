@@ -1,10 +1,13 @@
 import sys
-"""
-nao pode usar split
-"""
+
 
 def ft_inventory_system() -> None:
-    # Check if have arguments
+    """
+    Parses command-line arguments to build a game inventory system.
+    Uses dictionaries to store items and their quantities, calculates 
+    statistics (total and unique items), sorts the inventory by 
+    abundance, and categorizes items to provide restock suggestions.
+    """
     if len(sys.argv) < 2:
         return
 
