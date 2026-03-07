@@ -28,7 +28,7 @@ def ft_command_quest() -> None:
     for i, arg in enumerate(user_args, start=1):
         print(f"Argument {i}: {arg}")
 
-    print(f"Total arguments: {len(sys.argv)}")
+    print(f"Total arguments: {len(sys.argv)}\n")
 
 
 if __name__ == "__main__":

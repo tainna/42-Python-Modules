@@ -13,8 +13,10 @@ def ft_score_analytics() -> None:
     # "1:" Start at item #1 and take everything until the end.
 
     if not user_args:
-        print("No arguments provided.")
-        print("Usage: python3 ft_score_analytics.py <score1> <score2>")
+        print(
+            "No arguments provided. Usage: python3 "
+            "ft_score_analytics.py <score1> <score2> ..."
+        )
         return
 
     scores = []
@@ -32,7 +34,7 @@ def ft_score_analytics() -> None:
     print(f"Average score: {sum(scores) / len(scores)}")
     print(f"High core: {max(scores)}")
     print(f"Low sore: {min(scores)}")
-    print(f"Score range: {max(scores) - min(scores)}")
+    print(f"Score range: {max(scores) - min(scores)}\n")
 
 
 if __name__ == "__main__":

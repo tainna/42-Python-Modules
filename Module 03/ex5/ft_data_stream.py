@@ -1,34 +1,42 @@
 import time
-from typing import Generator
+from typing import Any, Dict, Generator
 
 
-def generator(total_events: int) -> Generator[dict, None, None]:
+def generator(total_events: int) -> Generator[Dict[str, Any], None, None]:
     """
-    This function
+    Yields simulated game events one by one to save memory.
+    Uses modulo arithmetic to continuously loop through available
+    player names and actions without requiring external random libraries.
     """
     players = ["alice", "bob", "charlie"]
     actions = ["killed_monster", "found_treasure", "leveled_up"]
+
     for i in range(total_events):
-        (event) = {
+        event = {
             "player": players[i % len(players)],
             "level": (i % 20) + 1,
             "action": actions[i % len(actions)]
         }
-        yield (event)
+        yield event
 
 
 def Analyses_processor() -> None:
+    """
+    Consumes the generator stream to compute statistics in real-time.
+    Tracks high-level players and specific event occurrences, then
+    calculates the total processing time to demonstrate efficiency.
+    """
     print("=== Game Data Stream Processor ===")
     print("\nProcessing 1000 game events...\n")
 
     stream = generator(1000)
 
-    total_events = 0
-    high_level = 0
-    level_up = 0
-    treasure = 0
+    total_events: int = 0
+    high_level: int = 0
+    level_up: int = 0
+    treasure: int = 0
 
-    start_time = time.time()
+    start_time: float = time.time()
 
     for event in stream:
         total_events += 1
@@ -45,11 +53,11 @@ def Analyses_processor() -> None:
             high_level += 1
         if event['action'] == "found_treasure":
             treasure += 1
-        if event['action'] >= "leveled_up":
+        if event['action'] == "leveled_up":
             level_up += 1
 
-    end_time = time.time()
-    processing_time = end_time - start_time
+    end_time: float = time.time()
+    processing_time: float = end_time - start_time
 
     print("\n=== Stream Analytics ===")
     print(f"Total events processed: {total_events}")
@@ -62,23 +70,29 @@ def Analyses_processor() -> None:
 
 
 def fibonacci(limit: int) -> Generator[int, None, None]:
-    a = 0
-    b = 1
+    """
+    Generates the Fibonacci sequence up to a given limit.
+    Uses tuple unpacking to update values simultaneously.
+    """
+    a: int = 0
+    b: int = 1
 
     for _ in range(limit):
-        yield (a)
+        yield a
         a, b = b, a + b
-        """
-        explica ou refaz
-        """
 
 
 def prime_gen(limit: int) -> Generator[int, None, None]:
-    count = 0
-    numero_atual = 2
+    """
+    Yields a sequence of prime numbers up to the specified limit.
+    Tests divisibility for each number sequentially.
+    """
+    count: int = 0
+    numero_atual: int = 2
 
     while count < limit:
-        is_prime = True
+        is_prime: bool = True
+
         for divisor in range(2, numero_atual):
             if numero_atual % divisor == 0:
                 is_prime = False
