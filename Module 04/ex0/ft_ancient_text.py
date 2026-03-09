@@ -1,22 +1,27 @@
-
-
 def ft_ancient_text() -> None:
-    print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===\n")
+    """
+    Simulates a digital archive recovery system.
+    Safely attempts to open, read, and close a specific text file.
+    Handles missing files gracefully without crashing the system.
+    """
+    print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
 
     try:
         arquivo = open("ancient_fragment.txt")
-    
-    print("Accessing Storage Vault: ancient_fragment.txt")
-    print("Connection established...\n")
-    print("RECOVERED DATA:")
-    
-    arq = arquivo.read()
 
-    print(f"Data: {arq}")
+        print("Accessing Storage Vault: ancient_fragment.txt")
+        print("Connection established...\n")
+        print("RECOVERED DATA:")
 
-    arquivo.close
-    print("\nData recovery complete. Storage unit disconnected.")
+        arq = arquivo.read()
+        print(arq, end="")
+        # O end="" evita que o print adicione uma linha extra vazia no final
+        arquivo.close()
+        print("\nData recovery complete. Storage unit disconnected.")
 
-except FileNotFoundError:
-    print("Error: File not found")
-pass
+    except FileNotFoundError:
+        print("ERROR: Storage vault not found. Run data generator first.")
+
+
+if __name__ == "__main__":
+    ft_ancient_text()
