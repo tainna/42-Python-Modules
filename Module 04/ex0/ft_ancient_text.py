@@ -7,16 +7,16 @@ def ft_ancient_text() -> None:
     print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
 
     try:
-        arquivo = open("ancient_fragment.txt")
+        archive = open("ancient_fragment.txt")
 
         print("Accessing Storage Vault: ancient_fragment.txt")
         print("Connection established...\n")
         print("RECOVERED DATA:")
 
-        arq = arquivo.read()
+        arq = archive.read()
         print(arq, end="")
-        # O end="" evita que o print adicione uma linha extra vazia no final
-        arquivo.close()
+        # end="" prevents adding an extra empty line at the end
+        archive.close()
         print("\nData recovery complete. Storage unit disconnected.")
 
     except FileNotFoundError:
