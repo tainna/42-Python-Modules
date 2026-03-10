@@ -20,10 +20,10 @@ class NumericProcessor(DataProcessor):
 
     def validate(self, data: Any) -> bool:
 
-        if not isinstance(data, list) or len(data) == 0:
+        if not type(data) is not str or len(data) == 0:
             return False
         for item in data:
-            if not isinstance(item, (int, float)):
+            if type(item) is not (int) or type(data) is not (float):
                 return False
 
         return True
@@ -46,7 +46,7 @@ class NumericProcessor(DataProcessor):
 class TextProcessor(DataProcessor):
 
     def validate(self, data: Any) -> bool:
-        if not isinstance(data, str) or len(data) == 0:
+        if type(data) is not str or len(data) == 0:
             return False
         return True
 
@@ -54,10 +54,15 @@ class TextProcessor(DataProcessor):
 
         try:
             len_d = len(data)
-            sum_d = len(data.split())
-            # print(f"Processing data: {d_str}")
-            # print("Validation: Text data verified")
-            return (f"Processed text: {len_d} characters, {sum_d} words")
+            word_count = 0
+            in_word = False
+            for char in data:
+                if char == ' ' or char == '\n' or char == '\t':
+                    in_word = False
+                elif not in_word:
+                    word_count += 1
+                    in_word = True
+            return (f"Processed text: {len_d} characters, {word_count} words")
         except ValueError as error:
             return (f"Error processing data: {error}")
 
@@ -65,4 +70,10 @@ class TextProcessor(DataProcessor):
 class LogProcessor(DataProcessor):
 
     def validate(self, data) -> bool:
-        if not isinstance(data, )
+        if type(data) is not dict or len(data) == 0:
+            return False
+        return True
+
+    def process(self, data) -> str:
+
+        return (f"INFO level detected: System ready")
