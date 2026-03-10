@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, List, Dict, Union, Optional
+from typing import Any
 
 
 class DataProcessor(ABC):
@@ -28,7 +28,7 @@ class NumericProcessor(DataProcessor):
 
         return True
 
-    def process(self, data: Any) -> bool:
+    def process(self, data: Any) -> str:
 
         try:
             d_size = len(data)
@@ -74,6 +74,22 @@ class LogProcessor(DataProcessor):
             return False
         return True
 
-    def process(self, data) -> str:
+    def process(self, data: Any) -> str:
+        try:
+            idx = 0
+            for i in range(len(data)):
+                if data[i] == ":":
+                    idx = i
+                break
+            if idx == 0:
+                return f"Invalid log formay: {data}"
+            level = data[:idx]
+            message = data[idx+2:]
 
-        return (f"INFO level detected: System ready")
+            if level == "ERROR":
+                prefix = "[ALERT]"
+            else:
+                prefix = f"[{level}]"
+            return f"{prefix} {level} level detected: {message}"
+        except Exception as error:
+            return f"Error processing log data: {error}"
