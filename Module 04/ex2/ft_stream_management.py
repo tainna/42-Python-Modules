@@ -11,7 +11,7 @@ def ft_stream_management() -> None:
     archive_id: str = input("Input Stream active. Enter archivist ID: ")
     report: str = input("Input Stream active. Enter status report: ")
 
-    print(f"[STANDARD] Archive status from ARCH_7742: {archive_id}: {report}")
+    print(f"[STANDARD] Archive status from {archive_id}: {report}")
     print(
         "[ALERT] System diagnostic: Communication channels verified",
         file=sys.stderr
