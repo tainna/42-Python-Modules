@@ -1,5 +1,5 @@
 from abc import ABC, classmethod, abstractmethod
-from typing import Any, List, Union
+from typing import Any, List, Dict, Union, Optional
 
 
 class DataStream(ABC):
@@ -36,7 +36,8 @@ class SensorStream(DataStream):
     def process_batch(self, data_batch: List[Any]) -> str:
         try:
             data_batch.isinstance(int)
-            except ValueError as e
+        except ValueError as e:
+            print("Error: {e}")
 
         # TODO: Implementar a lógica do sensor usando try/except e isinstance()!
         pass
