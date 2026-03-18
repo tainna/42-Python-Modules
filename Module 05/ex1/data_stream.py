@@ -37,19 +37,18 @@ class StreamProcessor:
         self.streams: List[DataStream] = []
 
     def add_stream(self, stream: DataStream) -> None:
-        """Adiciona qualquer tipo de stream 
+        """Adiciona qualquer tipo de stream
         (Sensor, Transação, etc) à lista."""
         self.streams.append(stream)
 
     def process_all_batches(self, batches_list: List[List[Any]]) -> None:
         """
-        Isto é o Polimorfismo: 
-        Percorre a lista de streams e envia o batch correspondente para cada uma.
+        Isto é o Polimorfismo:Percorre a lista de streams
+        e envia o batch correspondente para cada uma.
         """
         for i in range(len(self.streams)):
             stream = self.streams[i]
             batch = batches_list[i]
-            
             resultado = stream.process_batch(batch)
             print(f"- {resultado}")
 
@@ -185,7 +184,7 @@ if __name__ == "__main__":
     print(f"Stream ID: {stats_s['stream_id']}, Type: {stats_s['type']}")
 
     batch_sensor = ["temp:22.5", "humidity:65", "pressure:1013"]
-    print(f"Processing sensor batch: [{', '.join(batch_sensor)}]") 
+    print(f"Processing sensor batch: [{', '.join(batch_sensor)}]")
     print(sensor.process_batch(batch_sensor))
 
     print("\nInitializing Transaction Stream...")
@@ -216,9 +215,9 @@ if __name__ == "__main__":
     processor.add_stream(event)
 
     super_batch = [
-        ["temp:24.0", "temp:25.0"],           # Lote para o Sensor
-        ["buy:200", "sell:50", "buy:100", "sell:10"], # Lote para a Transação
-        ["error", "error", "login"]           # Lote para o Evento
+        ["temp:24.0", "temp:25.0"],
+        ["buy:200", "sell:50", "buy:100", "sell:10"],
+        ["error", "error", "login"]
     ]
 
     print("\nStream filtering active: High-priority data only")
