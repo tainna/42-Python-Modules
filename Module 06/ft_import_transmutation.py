@@ -1,4 +1,3 @@
-# ft_import_transmutation.py
 
 # Método 1: Importação de módulo completo
 import alchemy.elements
@@ -14,7 +13,7 @@ from alchemy.elements import create_fire, create_earth
 from alchemy.potions import strength_potion
 
 
-def main():
+def ft_import_transmutation():
     """Demonstrates four different import transmutation methods."""
     print("=== Import Transmutation Mastery ===")
 
@@ -40,4 +39,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    ft_import_transmutation()

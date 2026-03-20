@@ -3,7 +3,7 @@ import alchemy.transmutation.advanced
 import alchemy.transmutation
 
 
-def main():
+def ft_pathway_debate():
     """Demonstrates absolute vs relative imports and package-level access."""
     print("=== Pathway Debate Mastery")
 
@@ -30,4 +30,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    ft_pathway_debate()
