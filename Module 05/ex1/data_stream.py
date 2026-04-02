@@ -33,7 +33,6 @@ class StreamProcessor:
     Instead, it holds a list of DataStream objects!
     """
     def __init__(self):
-        # Uma lista vazia que vai guardar objetos do tipo DataStream
         self.streams: List[DataStream] = []
 
     def add_stream(self, stream: DataStream) -> None:
@@ -43,14 +42,20 @@ class StreamProcessor:
 
     def process_all_batches(self, batches_list: List[List[Any]]) -> None:
         """
-        Isto é o Polimorfismo:Percorre a lista de streams
-        e envia o batch correspondente para cada uma.
+        Percorre a lista de streams e envia o batch correspondente
+        para cada uma.
         """
         for i in range(len(self.streams)):
             stream = self.streams[i]
             batch = batches_list[i]
-            resultado = stream.process_batch(batch)
-            print(f"- {resultado}")
+            stream.process_batch(batch)
+
+            if isinstance(stream, SensorStream):
+                print(f"- Sensor data: {len(batch)} readings processed")
+            elif isinstance(stream, TransactionStream):
+                print(f"- Transaction data: {len(batch)} operations processed")
+            elif isinstance(stream, EventStream):
+                print(f"- Event data: {len(batch)} events processed")
 
 
 class SensorStream(DataStream):
@@ -145,33 +150,33 @@ class EventStream(DataStream):
 
     def __init__(self, stream_id: str):
         super().__init__(stream_id)
-        self.total_login = 0
-        self.sum_error = 0.0
+        self.total_events = 0
+        self.total_errors = 0
 
     def process_batch(self, data_batch: List[Any]) -> str:
         try:
-            error = [
-                float(item.split(":")[1])
+            errors = [
+                item
                 for item in data_batch
-                if isinstance(item, str) and "error:" in item
+                if isinstance(item, str) and item == "error"
             ]
 
-            self.total_readings += len(data_batch)
-            self.sum_error += sum(error)
+            self.total_events += len(data_batch)
+            self.total_errors += len(errors)
 
             return (
-                f"Event analysis: {len(data_batch)} events,"
-                f"{sum(error)} error detected"
-                )
+                f"Event analysis: {len(data_batch)} events, "
+                f"{len(errors)} error detected"
+            )
         except Exception as e:
-            return f"Error processing transaction batch: {e}"
+            return f"Error processing event batch: {e}"
 
     def get_stats(self) -> Dict[str, Union[str, int, float]]:
         return {
             "stream_id": self.stream_id,
-            "type": "Event Data",
-            "total_login": self.total_login,
-            "error": self.sum_error
+            "type": "System Events",
+            "total_events": self.total_events,
+            "total_errors": self.total_errors
         }
 
 
@@ -219,6 +224,8 @@ if __name__ == "__main__":
         ["buy:200", "sell:50", "buy:100", "sell:10"],
         ["error", "error", "login"]
     ]
+
+    processor.process_all_batches(super_batch)
 
     print("\nStream filtering active: High-priority data only")
     print("Filtered results: 2 critical sensor alerts, 1 large transaction")

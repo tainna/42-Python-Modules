@@ -112,7 +112,7 @@ if __name__ == "__main__":
     text_proc = TextProcessor()
     data_t = "Hello Nexus World"
     print("\nInitializing Text Processor...")
-    print(f"Processing data: {data_t}")
+    print(f"Processing data: \"{data_t}\"")
 
     if text_proc.validate(data_t):
         print("Validation: Text data verified")
@@ -121,9 +121,9 @@ if __name__ == "__main__":
 
     """Log Processor"""
     log_proc = LogProcessor()
-    data_l = "RROR: Connection timeout"
+    data_l = "ERROR: Connection timeout"
     print("\nInitializing Log Processor...")
-    print(f"Processing data: {data_l}")
+    print(f"Processing data: \"{data_l}\"")
 
     if log_proc.validate(data_l):
         print("Validation: Log entry verified")

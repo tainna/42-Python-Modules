@@ -3,13 +3,13 @@ from abc import ABC, abstractmethod
 from typing import Any, List, Dict, Union, Protocol
 
 
-# 1. O PROTOCOLO (Duck Typing)
+# (Duck Typing)
 class ProcessingStage(Protocol):
     def process(self, data: Any) -> Any:
         ...
 
 
-# 2. A BASE DO PIPELINE (Abstract Base Class)
+# BASE OF PIPELINE (Abstract Base Class)
 class ProcessingPipeline(ABC):
     def __init__(self):
         self.stages: List[ProcessingStage] = []
@@ -22,11 +22,9 @@ class ProcessingPipeline(ABC):
         pass
 
 
-# 3. OS ESTÁGIOS (Assinaturas rigorosamente iguais ao UML)
+# STAGES (Assinaturas rigorosamente iguais ao UML)
 class InputStage:
     def process(self, data: Any) -> Dict[str, Any]:
-        print(f"Input: {data}")
-        # Tem de devolver um Dict como dita o UML
         return {"raw_data": data}
 
 
@@ -37,10 +35,8 @@ class TransformStage:
         if raw == "fail_test":
             raise ValueError("Invalid data format")
 
-        # Procuramos p" e nao sensor
         if "{" in raw:
             print("Transform: Enriched with metadata and validation")
-            # Dict Comprehension
             pairs = raw.strip(' {}').split(',')
             parsed = {
                 k.strip(' "'): v.strip(' "')
@@ -50,7 +46,6 @@ class TransformStage:
 
         elif "user,action" in raw:
             print("Transform: Parsed and structured data")
-            # List Comprehension
             clean = raw.replace('"', '')
             parsed_list = [col.strip() for col in clean.split(',')]
             return {"format": "csv", "data": parsed_list}
@@ -78,14 +73,14 @@ class OutputStage:
         return msg
 
 
-# 4. OS ADAPTADORES (Com Format Specific Handling real)
+# ADAPTERS (Format Specific Handling real)
 class JSONAdapter(ProcessingPipeline):
     def __init__(self, pipeline_id: str):
         super().__init__()
         self.pipeline_id = pipeline_id
 
     def process(self, data: Any) -> Union[str, Any]:
-        # Format-specific handling usando isinstance
+        # Format-specific handling using isinstance
         if not isinstance(data, str):
             return "Error: JSON requires string input"
 
@@ -128,10 +123,9 @@ class StreamAdapter(ProcessingPipeline):
         return current
 
 
-# 5. O GESTOR
+# MANAGER
 class NexusManager:
     def __init__(self):
-        # Uso obrigatorio do collections
         self.pipelines: collections.deque = collections.deque()
 
     def add_pipeline(self, pipeline: ProcessingPipeline) -> None:
@@ -142,7 +136,7 @@ if __name__ == "__main__":
     print("=== CODE NEXUS - ENTERPRISE PIPELINE SYSTEM ===")
     print("\nInitializing Nexus Manager...")
     print("Pipeline capacity: 1000 streams/second")
-    print("Creating Data Processing Pipeline...")
+    print("\nCreating Data Processing Pipeline...")
     print("Stage 1: Input validation and parsing")
     print("Stage 2: Data transformation and enrichment")
     print("Stage 3: Output formatting and delivery")
@@ -160,7 +154,7 @@ if __name__ == "__main__":
         manager.add_pipeline(pipe)
 
     print("\n=== Multi-Format Data Processing ===")
-    print("Processing JSON data through pipeline...")
+    print("\nProcessing JSON data through pipeline...")
     json_pipe.process('{"sensor": "temp", "value": 23.5, "unit": "C"}')
 
     print("\nProcessing CSV data through same pipeline...")
@@ -171,7 +165,7 @@ if __name__ == "__main__":
 
     print("\n=== Pipeline Chaining Demo ===")
     print("Pipeline A -> Pipeline B -> Pipeline C")
-    print("Data flow: Raw -> Processed -> Analyzed -> Stored")
+    print("Data flow: Raw -> Processed -> Analyzed -> Stored\n")
 
     out_a = "100 records processed"
     out_b = f"{out_a} through 3-stage pipeline"
