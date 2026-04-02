@@ -4,7 +4,7 @@ from typing import Any, List, Dict, Union, Optional
 
 class DataStream(ABC):
 
-    def __init__(self, stream_id: str):
+    def __init__(self, stream_id: str) -> None:
         self.stream_id = stream_id
 
     @abstractmethod
@@ -32,7 +32,7 @@ class StreamProcessor:
     This is the Manager class. It doesn't inherit from DataStream.
     Instead, it holds a list of DataStream objects!
     """
-    def __init__(self):
+    def __init__(self) -> None:
         self.streams: List[DataStream] = []
 
     def add_stream(self, stream: DataStream) -> None:
@@ -60,7 +60,7 @@ class StreamProcessor:
 
 class SensorStream(DataStream):
 
-    def __init__(self, stream_id: str):
+    def __init__(self, stream_id: str) -> None:
         super().__init__(stream_id)
         self.total_readings = 0
         self.sum_temp = 0.0
@@ -103,7 +103,7 @@ class SensorStream(DataStream):
 
 class TransactionStream(DataStream):
 
-    def __init__(self, stream_id: str):
+    def __init__(self, stream_id: str) -> None:
         super().__init__(stream_id)
         self.total_transactions = 0
         self.net_flow = 0.0
@@ -148,7 +148,7 @@ class TransactionStream(DataStream):
 
 class EventStream(DataStream):
 
-    def __init__(self, stream_id: str):
+    def __init__(self, stream_id: str) -> None:
         super().__init__(stream_id)
         self.total_events = 0
         self.total_errors = 0
