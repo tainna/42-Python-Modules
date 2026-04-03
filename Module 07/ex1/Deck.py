@@ -16,7 +16,7 @@ class Deck:
         self.cards.append(card)
 
     def remove_card(self, card_name: str) -> bool:
-        """Remove a primeira ocorrenc de uma carta pelo nome."""
+        """Remove a primeira ocorrencia de uma carta pelo nome."""
         for card in self.cards:
             if card.name == card_name:
                 self.cards.remove(card)
