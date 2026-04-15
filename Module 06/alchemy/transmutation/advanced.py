@@ -1,10 +1,11 @@
-
-# Importações relativas: '.' para o mesmo nível, '..' para subir um nível
+"""
+Relative imports: '.' for the same level, '..' to go up one level.
+"""
 from .basic import lead_to_gold
 from ..potions import healing_potion
 
 
-def philosophers_stone():
+def philosophers_stone() -> str:
     """Creates a philosopher's stone using gold and a healing potion."""
     gold_result = lead_to_gold()
     potion_result = healing_potion()
@@ -12,6 +13,6 @@ def philosophers_stone():
             f"and {potion_result}")
 
 
-def elixir_of_life():
+def elixir_of_life() -> str:
     """Returns the result of achieving eternal youth."""
     return "Elixir of life: eternal youth achieved!"

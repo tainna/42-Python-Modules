@@ -1,35 +1,34 @@
-
-# Método 1: Importação de módulo completo
+# Method 1: Full module import
 import alchemy.elements
 
-# Método 2: Importação de função específica
+# Method 2: Specific function import
 from alchemy.elements import create_water
 
-# Método 3: Importação com apelido (alias)
+# Method 3: Aliased import
 from alchemy.potions import healing_potion as heal
 
-# Método 4: Importações múltiplas
+# Method 4: Multiple imports
 from alchemy.elements import create_fire, create_earth
 from alchemy.potions import strength_potion
 
 
-def ft_import_transmutation():
+def ft_import_transmutation() -> None:
     """Demonstrates four different import transmutation methods."""
     print("=== Import Transmutation Mastery ===")
 
-    # Método 1
+    # Method 1
     print("\nMethod 1 - Full module import:")
     print(f"alchemy.elements.create_fire(): {alchemy.elements.create_fire()}")
 
-    # Método 2
+    # Method 2
     print("\nMethod 2 - Specific function import:")
     print(f"create_water(): {create_water()}")
 
-    # Método 3
+    # Method 3
     print("\nMethod 3 - Aliased import:")
     print(f"heal(): {heal()}")
 
-    # Método 4
+    # Method 4
     print("\nMethod 4 - Multiple imports:")
     print(f"create_earth(): {create_earth()}")
     print(f"create_fire(): {create_fire()}")
