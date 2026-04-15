@@ -1,7 +1,7 @@
 from ex0.CreatureCard import CreatureCard
 
 
-def main():
+def main() -> None:
     """Executa os testes básicos do Exercício 0."""
     print("DataDeck Card Foundation")
     print("Testing Abstract Base Class Design:")
