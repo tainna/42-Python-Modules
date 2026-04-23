@@ -1,4 +1,4 @@
-import elements
+from elements import create_fire, create_water
 from .elements import create_earth, create_air
 
 
@@ -9,6 +9,6 @@ def healing_potion() -> str:
 
 
 def strength_potion() -> str:
-    fire = elements.create_fire()
-    water = elements.create_water()
+    fire = create_fire()
+    water = create_water()
     return f"Strength potion brewed with '{fire}' and '{water}'"
