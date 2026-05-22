@@ -6,7 +6,7 @@ import site
 def get_package_path() -> str:
     """
     Retrieves the site-packages installation path.
-    Returns 'Unknown' if detection fails[cite: 107, 109].
+    Returns 'Unknown' if detection fails.
     """
     try:
         packages = site.getsitepackages()
@@ -18,7 +18,7 @@ def get_package_path() -> str:
 def display_matrix_status() -> None:
     """
     Detects the Python environment and displays status or instructions.
-    Implements environment detection logic as required[cite: 76, 106].
+    Implements environment detection logic as required.
     """
     try:
         is_venv = sys.prefix != sys.base_prefix
@@ -50,7 +50,7 @@ def display_matrix_status() -> None:
             print(f"\nPackage installation path:\n {pkg_path}")
 
     except Exception as e:
-        print(f"Erro crítico no sistema da Zion: {e}")
+        print(f"Critical error in the Zion system: {e}")
 
 
 if __name__ == "__main__":

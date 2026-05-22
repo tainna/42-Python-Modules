@@ -1,5 +1,6 @@
 import importlib
 from typing import List
+import importlib.metadata
 
 
 def check_dependencies(libs: List[str]) -> bool:
@@ -40,7 +41,7 @@ def run_matrix_analysis() -> None:
             'signal': np.random.randn(100).cumsum()
         })
 
-        # Generate the required visualization [cite: 170, 210]
+        # Generate the required visualization
         plt.figure(figsize=(10, 5))
         plt.plot(data['signal'], color='green')
         plt.title("Matrix Data Stream")
