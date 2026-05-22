@@ -1,11 +1,10 @@
-# Sem imports no topo!
 
 def light_spell_allowed_ingredients() -> list[str]:
     return ["earth", "air", "fire", "water"]
 
 
 def light_spell_record(spell_name: str, ingredients: str) -> str:
-    # Import adiado para evitar dependência circular
+    # late Import to avoid circular depedency
     from .light_validator import validate_ingredients
 
     status = validate_ingredients(ingredients)

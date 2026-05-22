@@ -1,7 +1,6 @@
-# Sem imports no topo!
 
 def validate_ingredients(ingredients: str) -> str:
-    # Import adiado para evitar dependência circular
+    # late import to avoid circular dependency
     from .light_spellbook import light_spell_allowed_ingredients
 
     allowed = light_spell_allowed_ingredients()
