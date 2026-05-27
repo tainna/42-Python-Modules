@@ -6,7 +6,6 @@ def mage_counter() -> Callable:
 
     def counter() -> int:
         nonlocal count
-    # Permite modificar a variável 'count' do escopo externo
         count += 1
         return count
     return counter
@@ -17,22 +16,18 @@ def spell_accumulator(initial_power: int) -> Callable:
 
     def add_power(amount: int) -> int:
         nonlocal total_power
-    # Permite modificar 'total_power' a cada chamada
         total_power += amount
         return total_power
     return add_power
 
 
 def enchantment_factory(enchantment_type: str) -> Callable:
-    # Não precisa de nonlocal aqui porque estamos apenas lendo
-    # o enchantment_type
     def enchant(item_name: str) -> str:
         return f"{enchantment_type} {item_name}"
     return enchant
 
 
 def memory_vault() -> dict[str, Callable]:
-    # O dicionário 'vault' é encapsulado aqui (estado privado)
     vault: dict[str, Any] = {}
 
     def store(key: str, value: Any) -> None:

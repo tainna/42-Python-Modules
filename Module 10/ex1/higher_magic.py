@@ -2,8 +2,6 @@ from typing import Callable
 
 
 def spell_combiner(spell1: Callable, spell2: Callable) -> Callable:
-    # Retornamos uma "função invólucro" (wrapper) que
-    # aceita os parâmetros de feitiço
     def combined_spell(target: str, power: int) -> tuple:
         return (spell1(target, power), spell2(target, power))
     return combined_spell
@@ -11,14 +9,12 @@ def spell_combiner(spell1: Callable, spell2: Callable) -> Callable:
 
 def power_amplifier(base_spell: Callable, multiplier: int) -> Callable:
     def amplified_spell(target: str, power: int) -> str:
-        # Multiplicamos o poder antes de passar para o feitiço base
         return base_spell(target, power * multiplier)
     return amplified_spell
 
 
 def conditional_caster(condition: Callable, spell: Callable) -> Callable:
     def conditional_spell(target: str, power: int) -> str:
-        # Verifica se a condição (que é uma função) retorna True
         if condition(target, power):
             return spell(target, power)
         return "Spell fizzled"
@@ -27,13 +23,11 @@ def conditional_caster(condition: Callable, spell: Callable) -> Callable:
 
 def spell_sequence(spells: list[Callable]) -> Callable:
     def sequence_spell(target: str, power: int) -> list:
-        # Aplica todos os feitiços da lista usando list comprehension
         return [spell(target, power) for spell in spells]
     return sequence_spell
 
 
 def main():
-    # ---- Feitiços base para testar ----
     def fireball(target: str, power: int) -> str:
         return f"Fireball hits {target}"
 
@@ -41,11 +35,7 @@ def main():
         return f"Heals {target}"
 
     def test_power_spell(target: str, power: int) -> str:
-        # Um feitiço falso só para retornar o número do poder e
-        # bater com o gabarito
         return str(power)
-
-    # ---- Testes e Saídas ----
 
     print("Testing spell combiner...")
     combined = spell_combiner(fireball, heal)
@@ -54,11 +44,8 @@ def main():
 
     print("Testing power amplifier...")
     amplified = power_amplifier(test_power_spell, 3)
-    # Mostrando a diferença entre o poder original e o
-    # resultado do feitiço amplificado
-    print(f"Original: 10, Amplified: {amplified('DummyTarget', 10)}")
 
-    # ---- Demonstrando as outras funções exigidas pelo exercício ----
+    print(f"Original: 10, Amplified: {amplified('DummyTarget', 10)}")
 
     print("\nDemonstrating conditional caster...")
 

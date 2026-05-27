@@ -21,7 +21,7 @@ def main() -> None:
     print("Space Station Data Validation")
     print("========================================")
 
-    # Criando uma estação válida
+    # Creating station
     try:
         valid_station = SpaceStation(
             station_id="ISS001",
@@ -38,26 +38,26 @@ def main() -> None:
         print(f"Crew: {valid_station.crew_size} people")
         print(f"Power: {valid_station.power_level}%")
         print(f"Oxygen: {valid_station.oxygen_level}%")
-        print(f"Status: {'Operational' if valid_station.is_operational
-                         else 'Offline'}\n")
+        status = 'Operational' if valid_station.is_operational else 'Offline'
+        print(f"Status: {status}\n")
+
     except ValidationError as e:
         print(f"Error: {e}")
 
     print("========================================")
 
-    # Tentando criar uma estação inválida para acionar os erros esperados
+    # Invalid station to show erros
     try:
         SpaceStation(
-            station_id="IS",  # Inválido: min_length=3
+            station_id="IS",
             name="Deep Space Nine",
-            crew_size=25,     # Inválido: le=20
-            power_level=105.0,  # Inválido: le=100.0
+            crew_size=25,
+            power_level=105.0,
             oxygen_level=90.0,
-            last_maintenance="Not a valid datetime string"
+            last_maintenance="Not a valid datetime string"  # type: ignore
         )
     except ValidationError as e:
         print("Expected validation error:")
-        # Formatando o erro para ficar claro qual campo falhou
         for error in e.errors():
             field = error.get("loc", ["Unknown"])[0]
             msg = error.get("msg", "Unknown error")

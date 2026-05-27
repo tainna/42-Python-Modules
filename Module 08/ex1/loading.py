@@ -7,6 +7,7 @@ def check_dependencies(libs: List[str]) -> bool:
     """Checks if required libraries are installed and prints their versions."""
     all_available = True
     print("LOADING STATUS: Loading programs...")
+    print("\nChecking dependencies:")
 
     for lib in libs:
         try:
@@ -35,7 +36,8 @@ def run_matrix_analysis() -> None:
         import numpy as np
         import matplotlib.pyplot as plt
 
-        print("Analyzing Matrix data...")
+        print("\nAnalyzing Matrix data...")
+        print("Processing 1000 data points...")
         # Simulate data engineering work
         data = pd.DataFrame({
             'signal': np.random.randn(100).cumsum()
@@ -46,7 +48,8 @@ def run_matrix_analysis() -> None:
         plt.plot(data['signal'], color='green')
         plt.title("Matrix Data Stream")
         plt.savefig("matrix_analysis.png")
-        print("Analysis complete! Results saved to: matrix_analysis.png")
+        print("\nAnalysis complete!)")
+        print("Results saved to: matrix_analysis.png")
 
     except Exception as e:
         print(f"An unexpected error occurred during analysis: {e}")

@@ -24,7 +24,7 @@ def mage_stats(mages: list[dict]) -> dict:
 
 
 def main():
-    print("Testing artifact sorter...")
+    print("\nTesting artifact sorter...")
     artifacts = [
         {'name': 'Crystal Orb', 'power': 85, 'type': 'focus'},
         {'name': 'Fire Staff', 'power': 92, 'type': 'weapon'}
@@ -33,7 +33,7 @@ def main():
     print(f"{sorted_arts[0]['name']} ({sorted_arts[0]['power']} power) comes"
           f"before {sorted_arts[1]['name']} ({sorted_arts[1]['power']} power)")
 
-    print("Testing spell transformer...")
+    print("\nTesting spell transformer...")
     spells = ['fireball', 'heal', 'shield']
     transformed = spell_transformer(spells)
     print(" ".join(transformed))
